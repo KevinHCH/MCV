@@ -4,6 +4,7 @@ class Config
 {
     private static $configuracion = array();
 
+    // Obtiene valores de la configuracion
     public static function  get($key)
     {
         if(self::$configuracion[$key]){
@@ -12,7 +13,7 @@ class Config
             return null;
         }
     }//get
-
+    // EStablece valores de configuracion
     public static function set($key, $val)
     {
         self::$configuracion[$key] = $val;

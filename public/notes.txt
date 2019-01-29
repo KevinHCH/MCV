@@ -1,0 +1,25 @@
+
+
+/noticias/listado/
+
+/noticias/listado/politica
+
+/noticias/listado/tecnologia/?pag=2
+
+
+
+###########
+Controlador
+
+
+            ######
+            Accion
+
+                    #########
+                    Parametro
+
+
+/noticias/listado/desde/2019-01-01/
+
+
+Para evitar el tener URL muy largas se crea la clase Router, como en Angular
