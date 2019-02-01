@@ -12,17 +12,12 @@ define('ROOT',dirname(dirname(__FILE__))); //File = Fichero actual
 // echo dirname(dirname(__FILE__))."<br>";
 // echo "</pre>";
 
-require(ROOT.DS."src".DS."init.php");
+require('ROOT'.DS."src".DS."init.php");
 
-echo Config::get('site.name');
+echo Config::get('site.name')."<br>";
 
-echo "<pre>";
-// $_SERVER['REQUEST_URI'] => Permite acceder a la url de la peticion
-print_r($_SERVER['REQUEST_URI']);
-echo "</pre>";
+// require('VIEW_ROOT'.ROOT.DS."resources".DS);
 
-$enrutador = new Router($_SERVER['REQUEST_URI']);
-echo "<pre>";
-print_r($enrutador);
-echo "</pre>";
+App::run($_SERVER['REQUEST_URI']);
+
 ?>

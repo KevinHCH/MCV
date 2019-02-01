@@ -40,7 +40,7 @@ class Router
     {
         return $this->uri;
     }
-    public function getCotrolador()
+    public function getControlador()
     {
         return $this->controlador;
     }

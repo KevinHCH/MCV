@@ -24,20 +24,24 @@ spl_autoload_register(function ($nombre_clase) {
     $ruta_a_clase = ROOT.DS."src".DS;
     // Si comienza por "Cotroller"
     //     /src/controller/<nombre>    
+    
     if (startsWith($nombre_clase, "Controller")) {
-        $ruta_a_clase .= "controller".DS.$nombre_clase;
+        // El Controller de esta linea es el nombre de carpetas, es importante que esten en mayus o minusc
+        $ruta_a_clase .= "Controller".DS.$nombre_clase;
+    
     }
     // Si no  si comieza por Model
     //     /src/model<nombre>
     elseif (startsWith($nombre_clase, "Model")) {
-        $ruta_a_clase .= "model".DS.$nombre_clase;
+        // El Controller de esta linea es el nombre de carpetas, es importante que esten en mayus o minusc
+        $ruta_a_clase .= "Model".DS.$nombre_clase;
     }// Si no
     //     /src/<nombre>
     else{
         $ruta_a_clase .= $nombre_clase;
     }//else
     $ruta_a_clase .=".php";
-
+    
     require($ruta_a_clase);
 
 });
