@@ -16,11 +16,12 @@ class BaseController
         // Al poner los "..." al principio, hace que los parametros
         // sean variables que se iran pasando 1 a 1
         $this->$metodo(...$parametros);
-        $salida = "<h1>Salida general</h1>";
-        $salida .= implode("-",$this->data);
-        return $salida;
+        $vista = new View();
+        
+        return $vista->render($this->data);
     }
-}
+
+}//BaseController
 
 
 ?>

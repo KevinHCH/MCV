@@ -28,7 +28,6 @@ spl_autoload_register(function ($nombre_clase) {
     if (startsWith($nombre_clase, "Controller")) {
         // El Controller de esta linea es el nombre de carpetas, es importante que esten en mayus o minusc
         $ruta_a_clase .= "Controller".DS.$nombre_clase;
-    
     }
     // Si no  si comieza por Model
     //     /src/model<nombre>

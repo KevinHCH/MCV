@@ -28,7 +28,7 @@ class App
         if (method_exists($objeto_controlador, $accion)) {
             $salida = $objeto_controlador->procesaAccion($accion, $params);
         }else{
-            throw new Exception("El metodo $accion no exsite");
+            throw new Exception("El metodo $accion no existe");
         }
         echo $salida;
     }
