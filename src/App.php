@@ -3,10 +3,23 @@
 class App  
 {
     private static $enrutador;
+    private static $db;
 
     public static function getRouter()
     {
         return self::$enrutador;
+    }
+    public function getDB()
+    {
+        return self::$db;
+    }
+    public static function initDb()
+    {
+        self::$db = new DB(
+            Config::get('db.user'),
+            Config::get('db.pass'),
+            Config::get('db.name')
+        );
     }
     public static function run($uri)
     {

@@ -3,5 +3,8 @@
 Config::set('site.name','Mi supero proyecto MVC');
 
 Config::set('db.host','localhost');
+Config::set('db.name','test');
+Config::set('db.user','admon');
+Config::set('db.pass','1234');
 
 ?>
