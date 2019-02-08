@@ -11,6 +11,11 @@ class Router
     public function __construct($uri) 
     {
         $this->uri = $uri;
+
+        if ($uri == "/") {
+            $this->redirect(Config::get("ruta.defecto"));
+        }
+
         // Quitamos la "/" de inicio o de final
         // $url_procesada = trim($uri,"/");
         // Al seperar con "?" se olvida de las variables ya que las cogera luego por GET
@@ -51,6 +56,11 @@ class Router
     public function getParams()
     {
         return $this->params;
+    }
+    public function redirect($url)
+    {
+        header("location:$url");
+        die();
     }
     
 }//Router

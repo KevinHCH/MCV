@@ -7,4 +7,7 @@ Config::set('db.name','test');
 Config::set('db.user','admon');
 Config::set('db.pass','1234');
 
+
+Config::set('ruta.defecto','/noticias/list/');
+
 ?>

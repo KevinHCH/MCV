@@ -19,8 +19,8 @@ class BaseController
         $vista = new View();
         
         return $vista->render($this->data);
-    }
-
+    }//procesaAccion
+    
 }//BaseController
 
 

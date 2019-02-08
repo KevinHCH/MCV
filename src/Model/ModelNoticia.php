@@ -58,10 +58,15 @@ class ModelNoticia extends BaseModel
     public function save()
     {
         if ($this->id == null) {
-            return $this->db->ejecutar("insert into noticias (titulo, texto, fecha) 
+            $resultado = $this->db->ejecutar("insert into noticias (titulo, texto, fecha) 
                                 values (?,?,?)", 
                                 $this->titulo, $this->texto, $this->fecha);
-            
+            if (is_array($resultado)) {
+                $this->id = $this->db->getLastId();
+                return [$this->id];
+            }else{
+                return $resultado;
+            }
         }else{
             return $this->db->ejecutar("update noticias 
                                 set titulo = ?,

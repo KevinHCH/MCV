@@ -11,7 +11,7 @@ class ControllerNoticias extends BaseController
             "noticia2",
             "noticia3",
         ];
-
+        // Estos son algunos de los ejemplos que podria tener nuestra Aplicacion
         // ModelNoticias::getNoticias();
         // ModelNoticias::getNoticias($pagina=1);
         // ModelNoticias::getNoticiasPublicadas();
