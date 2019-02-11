@@ -25,6 +25,19 @@ class ModelNoticia extends BaseModel
     private $texto;
     private $fecha;
     
+    public function __construct($data_row = []) {
+        parent::__construct();
+        if (count($data_row) > 0) {
+            $this->setId($data_row["id"]);
+            $this->setTitulo($data_row["titulo"]);
+            $this->setTexto($data_row["texto"]);
+            $this->setFecha($data_row["fecha"]);
+        }
+    }
+    public function getId()
+    {
+        return $this->id;
+    }//getTitulo
     public function getTitulo()
     {
         return $this->titulo;
@@ -40,6 +53,10 @@ class ModelNoticia extends BaseModel
         return $this->fecha;
     }//getFecha
 
+    public function setId($id)
+    {
+        $this->titulo = $id;
+    }//setTitulo
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
@@ -62,13 +79,13 @@ class ModelNoticia extends BaseModel
                                 values (?,?,?)", 
                                 $this->titulo, $this->texto, $this->fecha);
             if (is_array($resultado)) {
-                $this->id = $this->db->getLastId();
-                return [$this->id];
-            }else{
-                return $resultado;
+                $this->setId($this->db->getLastId());
+                $resultado []= $this->getId();
             }
+            return $resultado;
+            
         }else{
-            return $this->db->ejecutar("update noticias 
+            $resultado = $this->db->ejecutar("update noticias 
                                 set titulo = ?,
                                 texto = ?,
                                 fecha = ?
@@ -78,8 +95,23 @@ class ModelNoticia extends BaseModel
                                 $this->fecha,
                                 $this->id
                               );
+            if (is_array($resultado)) {
+                $this->setId($this->db->getLastId());
+                $resultado []= $this->getId();
+            }
+            return $resultado;
         }//else
-    }
+    }//save
+    
+    public static function getAllNoticias($page = 0, $num = 10)
+    {
+        $db = App::getDB();//Solo devuelve la DB
+        $resultado = $db->ejecutar("select id, titulo, texto, fecha from noticias");
+        $resultado = array_map(function($datos) {
+            return new ModelNoticia($datos);
+        },$resultado);
+        return $resultado;
+    }//getAllNoticias
 }//ModelNoticia
 
 
