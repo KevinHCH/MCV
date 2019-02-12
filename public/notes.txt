@@ -74,3 +74,20 @@ Estando en /MVC
         print_r($n);
         print_r($n->titulo);
         print_r($n->info_list);
+
+
+php -a
+include('bin/shell_autoload.php');
+$n = new ModelNoticia::getAll()[0];
+$n = new ModelNoticia(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha" => "2019/12/02"]);
+print_r(ModelNoticia::getAll()[0]);
+
+$n = new ModelNoticia(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha" => "2019/12/02"]);
+$n = new BaseModel(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha" => "2019/12/02"]);
+
+
+
+
+== GENTE PARA VERANO, DESARROLLO SOFTWARE ==
+BORNAN (EMPRESA IT)
+ATOS (EMPRESA IT)

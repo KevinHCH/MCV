@@ -50,7 +50,7 @@ class ModelNew extends BaseModel
             }
             return $resultado;
         }//else
-    }
+    }//save
     /**Funcion que permite realizar una consulta a la base de datos
      * @param $query: Consulta que se hara a la BBD
      * @param $values: Valores que se le pasan a la consulta
