@@ -48,3 +48,29 @@ EJERCICIOS CASA:
 -EL MODELO BASE DEBE TENER UN ELEMENTO PROTEGIDO (INFO_LIST = [];)
 USAR _CALL
 ***HACER UN NUEVO MODELO_NOTICIA CON _CALL PARA NO TENER QUE IMPLEMTAR SETTERS Y GETTERS***
+
+
+
+
+
+
+
+
+
+
+
+
+
+====== COMANDOS PARA INICIAR PHP INTERACTIVO ======
+
+php -a
+include('bin/shell_autoload.php');
+$n = new ModelNoticias("Trench","Chlorine","2019/02/12");
+Estando en /MVC
+        php -a
+        include('bin/shell_autoload.php');
+        $n = new ModelNew("Trench","Chlorine","2019/01/01");
+        $n->save();
+        print_r($n);
+        print_r($n->titulo);
+        print_r($n->info_list);
