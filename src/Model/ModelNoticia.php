@@ -13,36 +13,7 @@ class ModelNoticia extends BaseModel
 {
     protected static $lista_info = ['id','titulo','texto','fecha'];
 
-    public function save()
-    {
-        if ($this->id == null) {
-            $resultado = $this->db->ejecutar("insert into noticias (titulo, texto, fecha) 
-                                values (?,?,?)", 
-                                $this->titulo, $this->texto, $this->fecha);
-            if (is_array($resultado)) {
-                $this->setId($this->db->getLastId());
-                $resultado []= $this->getId();
-            }
-            return $resultado;
-            
-        }else{
-            $resultado = $this->db->ejecutar("update noticias 
-                                set titulo = ?,
-                                texto = ?,
-                                fecha = ?
-                                where id = ?",
-                                $this->titulo,
-                                $this->texto,
-                                $this->fecha,
-                                $this->id
-                              );
-            if (is_array($resultado)) {
-                $this->setId($this->db->getLastId());
-                $resultado []= $this->getId();
-            }
-            return $resultado;
-        }//else
-    }//save
+    
     
     // public static function getAllNoticias($page = 0, $num = 10)
     // {

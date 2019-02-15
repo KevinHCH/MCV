@@ -24,6 +24,7 @@ class App
     public static function run($uri)
     {
         self::$enrutador = new Router($uri);
+        self::initDb();
 
         $controlador = self::$enrutador->getControlador();
         $accion = self::$enrutador->getAccion();

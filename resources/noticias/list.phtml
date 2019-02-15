@@ -1,7 +1,7 @@
 <h1>Mi lista</h1>
-<ul>
     <?php
         foreach ($data as $noticia) { ?>
-            <li><?= $noticia?></li>
+        <h2><?= $noticia->getTitulo()?></h2>
+            <p><?= $noticia->getTexto()?><span style="background:lightgray;"><?= $noticia->getFecha()?></span></p>
+            <a href="/noticias/show/<?= $noticia->getId()?>">Ver mas</a>
         <?php } ?>
-</ul>

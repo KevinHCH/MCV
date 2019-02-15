@@ -7,8 +7,8 @@ class BaseController
 {
     protected $data;
 
-    public function __construct() {
-        $this->data = [];
+    public function __construct($data = array()) {
+        $this->data = $data;
     }
     // Esta funcion rellenara los datos
     public function procesaAccion($metodo, $parametros)
@@ -16,7 +16,7 @@ class BaseController
         // Al poner los "..." al principio, hace que los parametros
         // sean variables que se iran pasando 1 a 1
         $this->$metodo(...$parametros);
-        $vista = new View();
+        $vista = new View($this->data);
         
         return $vista->render($this->data);
     }//procesaAccion

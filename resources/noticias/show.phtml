@@ -1,4 +1,10 @@
-<h1>Mostrando noticias: <u><?= $data["id"]?></u></h1>
+<h1>Bienvenido <?= $data["perfil"]?></h1>
 <p>
-    <?= $data["contenido"]?>
+    <?php
+    $noticia = $data["noticia"];
+    ?>
+    <h2><?= $noticia->getTitulo()?></h2>
+    <p><?= $noticia->getTexto();?> </p>
 </p>
+Publicidad <br>
+<?= $data["publicidad"]?>

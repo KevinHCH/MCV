@@ -78,8 +78,15 @@ Estando en /MVC
 
 php -a
 include('bin/shell_autoload.php');
-$n = new ModelNoticia::getAll()[0];
+$n = new ModelNoticia();
+$n->setTitulo("Oliver Twist");
+$n->setTexto("Historia de un niño huerfano");
+$n->setFecha("2019/15/02");
+$n->save();
+
 $n = new ModelNoticia(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha" => "2019/12/02"]);
+$n = new ModelNoticia::getAll()[0];
+
 print_r(ModelNoticia::getAll()[0]);
 
 $n = new ModelNoticia(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha" => "2019/12/02"]);
@@ -91,3 +98,25 @@ $n = new BaseModel(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha
 == GENTE PARA VERANO, DESARROLLO SOFTWARE ==
 BORNAN (EMPRESA IT)
 ATOS (EMPRESA IT)
+
+
+
+print_r(get_class_methods(get_class($n)));
+
+
+to do:
+        -hacer update
+        -hacer otra entidad (como noticia)
+        -pensar en el resto de elementos (forms, sesiones, autentificaciones)
+
+
+
+
+
+== INTEGRACION DE SERVICIOS == 
+PARA EL FUNCIONAMIENTO EN NECESARIO
+        -IMPORTAR EL SCRIPT CON LIBRERIAS QUE TE DAN
+        
+SDK: STANDARD DEVELOPMENT KIT
+SCRIPT: SIRVE PARA INCLUIR TODAS LAS LIBRERIAS, 
+        TE OBLIGA A USAR UN DIV CON UN ID ESPECIFICO COMO EN PAYPAL
