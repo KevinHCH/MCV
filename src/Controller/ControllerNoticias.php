@@ -48,6 +48,24 @@ class ControllerNoticias extends BaseController
         // $this->data["id"] = $id;
         // $this->data["contenido"] = $datos_modelo[$id];
     }//show
+    public function add() 
+    {
+        $form = new ModelNoticiaForm($_POST);
+        echo "<pre>";
+        print_r($form);
+        echo "</pre>";
+        
+        $this->data['form_manager'] = $form;
+        die();
+
+        if($form->datosValidos()) {
+            $noticia = $form->getNoticia();
+            if ($noticia->save()) {
+                echo "inside";
+            }
+            App::getRouter()::redirect('/noticias/list/');
+        }
+    }
 }//ControllerDWES
 
 

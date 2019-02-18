@@ -83,14 +83,6 @@ class BaseModel
         return new $nombre_clase($resultado[0]);
         // return $resultado[0];
 
-        // MOYANO 
-        // $nombre_clase = get_called_class();
-        // $nombre_tabla = strtolower(substr($nombre_clase,5));
-        // $campos_para_select = implode(",",static::$lista_info);
-        // $sqlSelect = "Select $campos_para_select from $nombre_tabla where id = ? ";
-        
-        // $resultado = $db -> ejecutar($sqlSelect,$id);
-        // return $resultado[0];
     }//getById
 
     public function save()
@@ -106,7 +98,7 @@ class BaseModel
         echo "Nombre tabla => $nombre_tabla \n";
         echo "Capos insert => $campos_para_insert \n";
         echo "Parametros insert => $parametros_para_insert \n";
-
+        
         if ($this->getId() == null) {
             $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert)";
             echo $sql_insert;
@@ -130,8 +122,9 @@ class BaseModel
             }//forE
             $campos_up_completos = substr($campos_up_completos,0, strlen($campos_up_completos) - 1);
             
-            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = ?";
-            $resultado = $this->db->ejecutar($sql_update,$this->getId());
+            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = ".$this->getId();
+            
+            $resultado = $this->db->ejecutar($sql_update,...array_values(array_slice($this->data,1)));
             if (is_array($resultado)) {
                 $this->setId($this->db->getLastId());
                 $resultado []= $this->getId();

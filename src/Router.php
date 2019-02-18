@@ -57,7 +57,7 @@ class Router
     {
         return $this->params;
     }
-    public function redirect($url)
+    public static function redirect($url)
     {
         header("location:$url");
         die();

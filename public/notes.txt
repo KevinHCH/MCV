@@ -79,8 +79,9 @@ Estando en /MVC
 php -a
 include('bin/shell_autoload.php');
 $n = new ModelNoticia();
-$n->setTitulo("Udpated");
-$n->setTexto("Udpated");
+$n->setId("4");
+$n->setTitulo("updateddddd?");
+$n->setTexto("Udpated number one");
 $n->setFecha("2019/03/10");
 $n->save();
 
@@ -147,13 +148,16 @@ $n->save();
 De esta forma guarda el obj, pero no ejecuta la query
 php -a
 include('bin/shell_autoload.php');
-$n = new ModelTienda(['','camiseta','L',18,'https://srv.latostadora.com/designall.dll/toro_mecanico_black--i:13562320410010135623201709261;b:f8f8f8;s:H_A1;f:f;k:3b189a58f93bd0de6b2c333be6cd4736;p:1.jpg','']);
+$n = new ModelTienda([null,'camiseta','L',18,'https://srv.latostadora.com/designall.dll/toro_mecanico_black--i:13562320410010135623201709261;b:f8f8f8;s:H_A1;f:f;k:3b189a58f93bd0de6b2c333be6cd4736;p:1.jpg','']);
 $n->save();
 
 
 
 PREGUNTAS
         -SI QUIERO HACER ALGUNA CONSULTA EN CONCRETO, LA PUEDO AGREGAR EN EL MODELO O TENGO QUE HACERLA SIEMPRE EN EL PADRE?
+                -R: NO SIEMPRE HACE FALTA, PUEDE ESTAR EN EL MODELO EN CONCRETO
         -LAS CONSULTAS SIEMPRE DEBEN SER STATICAS PARA PODER ACCEDER DESDE EL CONSTRUCTOR? (SI NO, TENEMOS EL PROBLEMA DE TENER QUE INSTANCIAR
                                                                                             UN OBJETO CADA VEZ QUE QUERAMOS UNA FUNCION/QUERY EN CONCRETO)
+                -R: NO SIEMPRE, SE PUEDEN HACER LAS INSTANCIAS DE CLASES Y DEMAS
         -DESDE DONDE INVOCARIA AL STYLE DE CSS? O COMO LO BUSCA, CON AL AUTOLOAD?
+                -R: DEBE IR EN EL BASE HTML
