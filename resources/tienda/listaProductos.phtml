@@ -1,0 +1,15 @@
+<h1>Lista de productos</h1>
+<?php 
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+?>
+    <?php
+        foreach ($data as $prenda) { ?>
+        <h2><?= $prenda->getPrenda()?></h2>
+            <img src="<?=$prenda->getImg()?>" alt="<?=$prenda->getPrenda()?>">    
+                <p>Talla: <?= $prenda->getTalla()?></p>
+                <p>Precio: <?= $prenda->getPrecio()?></p>
+            </div>
+        <a href="/noticias/show/<?= $noticia->getPrenda()?>">Ver mas</a>
+    <?php } ?>

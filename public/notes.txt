@@ -120,3 +120,40 @@ PARA EL FUNCIONAMIENTO EN NECESARIO
 SDK: STANDARD DEVELOPMENT KIT
 SCRIPT: SIRVE PARA INCLUIR TODAS LAS LIBRERIAS, 
         TE OBLIGA A USAR UN DIV CON UN ID ESPECIFICO COMO EN PAYPAL
+
+
+
+
+MVC TIENDA
+
+php -a
+include('bin/shell_autoload.php');
+$n = new ModelTienda();
+$n->setPrenda("Camiseta");
+$n->setTalla("XL");
+$n->setPrecio("23");
+$n->setImg("https://srv.latostadora.com/designall.dll/rytlock_azufre--i:1356239208310135623201709261;b:f8f8f8;s:H_A1;f:f;k:01f03f983f68b22eb062d78efacaea0d;p:1.jpg");
+$n->save();
+
+php -a
+include('bin/shell_autoload.php');
+$n = new ModelTienda();
+$n->setPrenda("camiseta");
+$n->setTalla("L");
+$n->setPrecio("18");
+$n->setImg("https://srv.latostadora.com/designall.dll/toro_mecanico_black--i:13562320410010135623201709261;b:f8f8f8;s:H_A1;f:f;k:3b189a58f93bd0de6b2c333be6cd4736;p:1.jpg");
+$n->save();
+
+De esta forma guarda el obj, pero no ejecuta la query
+php -a
+include('bin/shell_autoload.php');
+$n = new ModelTienda(['','camiseta','L',18,'https://srv.latostadora.com/designall.dll/toro_mecanico_black--i:13562320410010135623201709261;b:f8f8f8;s:H_A1;f:f;k:3b189a58f93bd0de6b2c333be6cd4736;p:1.jpg','']);
+$n->save();
+
+
+
+PREGUNTAS
+        -SI QUIERO HACER ALGUNA CONSULTA EN CONCRETO, LA PUEDO AGREGAR EN EL MODELO O TENGO QUE HACERLA SIEMPRE EN EL PADRE?
+        -LAS CONSULTAS SIEMPRE DEBEN SER STATICAS PARA PODER ACCEDER DESDE EL CONSTRUCTOR? (SI NO, TENEMOS EL PROBLEMA DE TENER QUE INSTANCIAR
+                                                                                            UN OBJETO CADA VEZ QUE QUERAMOS UNA FUNCION/QUERY EN CONCRETO)
+        -DESDE DONDE INVOCARIA AL STYLE DE CSS? O COMO LO BUSCA, CON AL AUTOLOAD?

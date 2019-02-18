@@ -19,3 +19,15 @@ create table noticia(
     fecha date not null,
     primary key(id)
 );
+
+-- Mi primer MVC 
+drop table if exists tienda;
+
+create table tienda (
+    id int auto_increment not null primary key,
+    prenda varchar (255) not null,
+    talla char (5) not null,
+    precio int (3) not null,
+    img varchar (255) ,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);

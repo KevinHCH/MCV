@@ -21,6 +21,10 @@ class BaseModel
         // Si no 
         //     combina los datos de data_row con lista_info por que tienes datos en el constructor
         else{
+            // print_r($data_row);
+            // print_r($this->data);
+            // **Saltaba error por que el array_combine necesita tener el mismo numero de keys, que de values 
+            // entre los 2 arrays que se le pasan**
             $this->data = array_combine(static::$lista_info, $data_row);
         }
     }//construct

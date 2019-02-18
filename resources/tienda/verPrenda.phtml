@@ -1,0 +1,29 @@
+<?php 
+// Guardo los datos obtenidos en una var
+$prenda = $data["prenda"];
+
+// Para mostrar los datos solo llamo a los metodos que me daran los datos del obj que tiene mis datos
+
+?>
+<style>
+    body>div:first-of-type{
+        text-align:center;  
+        font-family:arial;
+    }
+    div>img{
+        box-shadow:0px 10px 10px black;
+        padding:5px;
+    }
+    div>p:last-of-type{
+        color:darkred;
+    }
+</style>
+<div>
+    <h2>Prenda: <?= $prenda->getPrenda()?></h2>
+    
+    <div>
+    <img src="<?=$prenda->getImg()?>" alt="<?=$prenda->getPrenda()?>">    
+        <p>Talla: <?= $prenda->getTalla()?></p>
+        <p>Precio: <?= $prenda->getPrecio()?></p>
+    </div>
+</div>
