@@ -79,9 +79,9 @@ Estando en /MVC
 php -a
 include('bin/shell_autoload.php');
 $n = new ModelNoticia();
-$n->setTitulo("Oliver Twist");
-$n->setTexto("Historia de un niño huerfano");
-$n->setFecha("2019/15/02");
+$n->setTitulo("Udpated");
+$n->setTexto("Udpated");
+$n->setFecha("2019/03/10");
 $n->save();
 
 $n = new ModelNoticia(["id" => 1, "titulo" => "yooo", "texto" => "all good", "fecha" => "2019/12/02"]);

@@ -32,11 +32,12 @@ class DB {
             $sentenciaSQL = $this->connection->prepare($sql);
             
             $sentenciaEjecutada = $sentenciaSQL->execute($params);
+            echo "\n Sentencia ejecutada => ";
+            var_dump($sentenciaEjecutada);
             
             if (!$sentenciaEjecutada) {
-                // echo "<pre>";
-                echo print_r($this->connection->errorInfo());
-                // echo "</pre>";
+                print_r($this->connection->errorInfo());
+                // var_dump($this->connection->errorInfo());
                 return null;
             }else{
                 $resultado = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
@@ -51,10 +52,6 @@ class DB {
     public function getLastId()
     {
         return $this->connection->lastInsertId();
-    }
-
-    public function escape($str) {
-        return mysqli_escape_string($this->connection, $str);
     }
 
     public function __destruct()

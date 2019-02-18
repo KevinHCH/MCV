@@ -77,6 +77,16 @@ class BaseModel
 
         $resultado = $db->ejecutar("SELECT $campos_para_select FROM $nombre_tabla WHERE id = ?;", $id);
         return new $nombre_clase($resultado[0]);
+        // return $resultado[0];
+
+        // MOYANO 
+        // $nombre_clase = get_called_class();
+        // $nombre_tabla = strtolower(substr($nombre_clase,5));
+        // $campos_para_select = implode(",",static::$lista_info);
+        // $sqlSelect = "Select $campos_para_select from $nombre_tabla where id = ? ";
+        
+        // $resultado = $db -> ejecutar($sqlSelect,$id);
+        // return $resultado[0];
     }//getById
 
     public function save()
@@ -84,32 +94,40 @@ class BaseModel
         $db = App::getDB();//Solo devuelve la DB
 
         $nombre_clase = get_called_class();//Obtendra el nombre de mis hijos
+        
         $nombre_tabla = strtolower(substr($nombre_clase, 5));
         $campos_para_insert = implode(",",array_slice(static::$lista_info,1));
-        $parametros_para_insert = implode(",",array_fill(0,count(static::$lista_info -1), "?"));
+        $parametros_para_insert = implode(",",array_fill(0,(count(static::$lista_info) -1 ), "?"));
+
+        echo "Nombre tabla => $nombre_tabla \n";
+        echo "Capos insert => $campos_para_insert \n";
+        echo "Parametros insert => $parametros_para_insert \n";
 
         if ($this->getId() == null) {
-            $sql_insert = "INSERT INTO noticias ($campo_para_inssert) VALUES ($parametros_para_insert)";
-
+            $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert)";
+            echo $sql_insert;
+            print_r(array_values(array_slice($this->data,1)));
             $resultado = $this->db->ejecutar($sql_insert, ...array_values(array_slice($this->data,1)));
-
             if (is_array($resultado)) {
                 $this->setId($this->db->getLastId());
                 $resultado []= $this->getId();
             }
             return $resultado;
             
-        }else{
-            $resultado = $this->db->ejecutar("update noticias 
-                                set titulo = ?,
-                                texto = ?,
-                                fecha = ?
-                                where id = ?",
-                                $this->titulo,
-                                $this->texto,
-                                $this->fecha,
-                                $this->id
-                              );
+        }
+        // UPDATE
+        else{
+            
+            $campos_up_completos = "";
+            $campos_up = array_slice(static::$lista_info,1);
+
+            foreach ($campos_up as $value) {
+                $campos_up_completos  .= "$value=?,";
+            }//forE
+            $campos_up_completos = substr($campos_up_completos,0, strlen($campos_up_completos) - 1);
+            
+            $sql_update = "UPDATE $nombre_tabla set $campos_up_completos where id = ?";
+            $resultado = $this->db->ejecutar($sql_update,$this->getId());
             if (is_array($resultado)) {
                 $this->setId($this->db->getLastId());
                 $resultado []= $this->getId();
@@ -118,6 +136,7 @@ class BaseModel
         }//else
     }//save
     
+
 }//BaseModel
 
 
