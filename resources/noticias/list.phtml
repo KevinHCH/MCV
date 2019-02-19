@@ -1,7 +1,9 @@
 <h1>Mi lista</h1>
+<a href="/noticias/add/">Agregar una nueva noticia</a>
     <?php
         foreach ($data as $noticia) { ?>
         <h2><?= $noticia->getTitulo()?></h2>
             <p><?= $noticia->getTexto()?><span style="background:lightgray;"><?= $noticia->getFecha()?></span></p>
-            <a href="/noticias/show/<?= $noticia->getId()?>">Ver mas</a>
+            <a href="/noticias/show/<?= $noticia->getId()?>">Ver la noticia <strong><i><?= $noticia->getTitulo()?></i></strong> </a><br>
+            <a href="/noticias/edit/<?= $noticia->getId()?>">Editar noticia</a>
     <?php } ?>

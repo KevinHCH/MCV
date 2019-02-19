@@ -100,8 +100,10 @@ class BaseModel
         echo "Parametros insert => $parametros_para_insert \n";
         
         if ($this->getId() == null) {
-            $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert)";
-            echo $sql_insert;
+            $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert);";
+            echo "<pre>";
+            print_r($sql_insert);
+            echo "</pre>";
             print_r(array_values(array_slice($this->data,1)));
             $resultado = $this->db->ejecutar($sql_insert, ...array_values(array_slice($this->data,1)));
             if (is_array($resultado)) {
@@ -132,6 +134,11 @@ class BaseModel
             return $resultado;
         }//else
     }//save
+
+    public function toArray()
+    {
+        return $this->data;
+    }
     
 
 }//BaseModel

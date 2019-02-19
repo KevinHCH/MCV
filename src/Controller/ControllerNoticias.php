@@ -2,6 +2,7 @@
 
 class ControllerNoticias extends BaseController
 {
+    protected static $requiere_autentificacion = ['edit','add'];
     public function list()
     {
         // Trabajo con modelos
@@ -48,24 +49,38 @@ class ControllerNoticias extends BaseController
         // $this->data["id"] = $id;
         // $this->data["contenido"] = $datos_modelo[$id];
     }//show
-    public function add() 
-    {
+    
+    public function add(){
         $form = new ModelNoticiaForm($_POST);
-        echo "<pre>";
-        print_r($form);
-        echo "</pre>";
-        
-        $this->data['form_manager'] = $form;
-        die();
 
-        if($form->datosValidos()) {
-            $noticia = $form->getNoticia();
-            if ($noticia->save()) {
-                echo "inside";
-            }
+        if(count($_POST)>0 && $form->datosValidos()) {
+            $form->guardaInformacion();
+            // echo "<pre>";
+            // print_r($form);
+            // echo "</pre>";
+            // die();
             App::getRouter()::redirect('/noticias/list/');
         }
-    }
+
+        $this->data['form'] = $form->pintar();
+    }//add
+
+    public function edit($id) {
+
+        if(count($_POST) == 0 ){
+            $n = ModelNoticia::getById($id);
+            $form = new ModelNoticiaForm($n->toArray());
+        } else {
+            $form = new ModelNoticiaForm($_POST);
+        }
+
+        if(count($_POST)>0 && $form->datosValidos()) {
+          $form->guardaInformacion();
+          App::getRouter()::redirect('/noticias/list/');
+        }
+
+        $this->data['form'] = $form->pintar();
+    }//edit
 }//ControllerDWES
 
 

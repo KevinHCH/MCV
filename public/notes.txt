@@ -76,12 +76,13 @@ Estando en /MVC
         print_r($n->info_list);
 
 
+$n->setId("4");
 php -a
 include('bin/shell_autoload.php');
 $n = new ModelNoticia();
-$n->setId("4");
-$n->setTitulo("updateddddd?");
-$n->setTexto("Udpated number one");
+
+$n->setTitulo("mi titulo");
+$n->setTexto("esta es mi noticia");
 $n->setFecha("2019/03/10");
 $n->save();
 

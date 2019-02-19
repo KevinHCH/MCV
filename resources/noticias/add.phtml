@@ -1,23 +1,2 @@
-<h2>Agregar noticia</h2>
-<form action="" method="post">
-    <div>
-        <label for="titulo">Titulo</label>
-        
-        <input type="text" name="titulo" id="titulo" value="<?=$data['form_manager']->getTitulo()?>">
-        <?=$data['form_manager']->getErrorTitulo()?>
-        
-    </div>
-    <div>
-        <label for="texto">Texto</label>
-        <textarea name="texto" id="texto" cols="40" rows="5"><?=$data['form_manager']->getTexto()?></textarea>
-        <?=$data['form_manager']->getErrorTexto()?>
-    </div>
-    <div>
-        <label for="fecha">Fecha</label>
-        <input type="date" name="fecha" id="titulo" value="<?=$data['form_manager']->getFecha()?>">
-        <?=$data['form_manager']->getErrorFecha()?>
-    </div>
-    <div>
-        <input type="submit" value="Enviar" >
-    </div>
-</form>
+<?=$data['form']?>
+<a href="/noticias/list/">Volver al principio</a>
