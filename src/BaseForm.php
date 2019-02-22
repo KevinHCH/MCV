@@ -33,7 +33,8 @@ class BaseForm
         return in_array($nombre, static::$lista_info);
     }
 
-    public function __construct($data_row = []) {
+    public function __construct($data_row = []) 
+    {
         $this->errores = false;
 
         //
