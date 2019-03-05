@@ -31,3 +31,23 @@ create table tienda (
     img varchar (255) ,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
+
+
+-- MVC persona
+drop table if exists persona;
+create table persona (
+    dni varchar(9) not null,
+    nombre varchar (20) not null,
+    apellido varchar (20) not null,
+    edad date not null,
+    primary key (dni)
+);
+
+
+drop table if exists usuario;
+create table usuario(
+    id_usuario int auto_increment not null primary key,
+    nombre_usuario varchar(20) not null,
+    email varchar (20) not null,
+    pass varchar (120) not null
+);

@@ -41,8 +41,9 @@ class BaseModel
     {
         $dato_pedido = strtolower(substr($nombre,3));
         $accion = substr($nombre, 0 , 3);
+        
         if (!$this->estaEnListaDatos($dato_pedido)) {
-            return "Error";
+            return "Error al obtener el ID";
         }//if
 
         if ($accion == "get") {
@@ -95,23 +96,20 @@ class BaseModel
         $campos_para_insert = implode(",",array_slice(static::$lista_info,1));
         $parametros_para_insert = implode(",",array_fill(0,(count(static::$lista_info) -1 ), "?"));
 
-        echo "Nombre tabla => $nombre_tabla \n";
-        echo "Capos insert => $campos_para_insert \n";
-        echo "Parametros insert => $parametros_para_insert \n";
+        // echo "Nombre tabla => $nombre_tabla <br>";
+        // echo "Capos insert => $campos_para_insert <br>";
+        // echo "Parametros insert => $parametros_para_insert <br>";
         
         if ($this->getId() == null) {
             $sql_insert = "INSERT INTO $nombre_tabla ($campos_para_insert) VALUES ($parametros_para_insert);";
-            echo "<pre>";
-            print_r($sql_insert);
-            echo "</pre>";
-            print_r(array_values(array_slice($this->data,1)));
+            
             $resultado = $this->db->ejecutar($sql_insert, ...array_values(array_slice($this->data,1)));
             if (is_array($resultado)) {
                 $this->setId($this->db->getLastId());
                 $resultado []= $this->getId();
             }
-            return $resultado;
             
+            return $resultado;
         }
         // UPDATE
         else{

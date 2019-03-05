@@ -1,6 +1,4 @@
 <?php
-
-
 /***
 Requisitos:
   Esta clase gestiona el pintado de los campos del formulario cuando se visita
@@ -45,7 +43,6 @@ class BaseForm
             $tipo_campo = static::$lista_tipo[$i];
             $nombre_campo = static::$lista_info[$i];
             $campos[] = new $tipo_campo($nombre_campo);
-
         }
         //
         // Los meto en el array asociativo
@@ -53,7 +50,6 @@ class BaseForm
         //   campo1 => new FieldTipo('nombre_de_campo')
         //
         $this->campos = array_combine(static::$lista_info, $campos);
-
         if(count($data_row)>0){
             //
             // Tengo datos:
@@ -78,9 +74,9 @@ class BaseForm
                 );
                 if(!$campo->validar()){
                     $this->errores = true;
-                }
-            }
-        }
+                }//if
+            }//forE
+        }//if
 
         if(count($_POST)>0){
             if($this->datosValidos()){
@@ -90,9 +86,10 @@ class BaseForm
                 $datos = array_combine(static::$lista_info, $datos);
 
                 $this->modelo = new static::$clase_modelo_asociado($datos);
+                
             }
         }
-    }
+    }//construct
 
     function datosValidos(){
         return !$this->errores;
@@ -113,6 +110,10 @@ class BaseForm
     }
 
     function guardaInformacion() {
+        // echo "<pre>";
+        // print_r($this->modelo);
+        // echo "</pre>";
+        // die();
         $this->modelo->save();
     }
 }

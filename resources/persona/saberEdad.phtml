@@ -1,0 +1,11 @@
+<?php 
+// Datos de la persona
+$p = $data["persona"][0];
+// Edad de la persona, ya calculada
+$edad = $data["persona"][1];
+?>
+
+<div>
+    <h2>Nombre: <?=$p->getNombre()?> <?=$p->getApellido()?></h2>
+    <h3>Edad: <?=$edad?></h3>
+</div>

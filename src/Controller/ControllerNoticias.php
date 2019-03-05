@@ -55,11 +55,11 @@ class ControllerNoticias extends BaseController
 
         if(count($_POST)>0 && $form->datosValidos()) {
             $form->guardaInformacion();
-            // echo "<pre>";
-            // print_r($form);
-            // echo "</pre>";
-            // die();
-            App::getRouter()::redirect('/noticias/list/');
+            echo "<pre>";
+            print_r($form);
+            echo "</pre>";
+            die();
+            // App::getRouter()::redirect('/noticias/list/');
         }
 
         $this->data['form'] = $form->pintar();

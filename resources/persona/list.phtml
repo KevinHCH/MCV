@@ -1,0 +1,9 @@
+<?php 
+
+foreach ($data as $key => $value) { ?>
+    <div>
+        <h2>Nombre: <?=$value->getNombre()?></h2>
+        <h3>Apellido: <?=$value->getApellido()?></h3>
+        <h3>Fecha nacimiento: <?=$value->getEdad()?></h3>
+    </div>
+<?php } ?>

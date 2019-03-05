@@ -5,6 +5,9 @@ define('DS',DIRECTORY_SEPARATOR); // Permite que la app funcione en windows y li
 define('ROOT',dirname(dirname(__FILE__))); //File = Fichero actual
 define('VIEW_ROOT',ROOT.DS."resources".DS);
 require(ROOT.DS."src".DS."init.php");
+// if ($_SERVER['REQUEST_URI'] == "/?XDEBUG_SESSION_START=netbeans-xdebug") {
+//     $_SERVER['REQUEST_URI'] = "/";
+// }
 
 App::run($_SERVER['REQUEST_URI']);
 ?>
